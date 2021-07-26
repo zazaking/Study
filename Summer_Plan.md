@@ -1,6 +1,6 @@
-<div align='center' ><font size='50'>暑期任务安排</font></div>
+<div align='center' ><font size='70'>暑期任务安排</font></div>
+<div align='right' >by 郑泽灏</div>
 ***
-[TOC]
 ***
 
 # 1. Git环境配置
@@ -19,41 +19,61 @@
 - 工作区：就是你在电脑里能看到的目录。
 - 暂存区：英文叫 stage 或 index。一般存放在 ``.git ``目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
 - 版本库：工作区有一个隐藏目录 ``.git``，这个不算工作区，而是 Git 的版本库。、
-### 1.2.3 GitHub下载项目到本地
-```c
-git init //把本地的目录变成git本地仓库（本地创建.git可管理的仓库）
-git remote add origin + url //添加远程仓库
-git remote -v //查看目录下到得所有项目
-git clone + url //下载代码到本地,这里``git pull + url``也可行
+### 1.2.3  配置用户名和密码
+```bash
+#配置用户名和密码：
+git config user.name "Your Name"  
+git config user.email "email@example.com"
+#查看当前用户信息： 
+git config --list
 ```
-### 1.2.4 提交本地代码到GitHub
-```c
-git add . //别忘记后面的.，此操作是把文件夹下面的文件(更新+新增)都添加进来
-git commit -m "提交信息" //“提交信息”里面换成你需要，如“first commit”
-git status //查看状态
-git push + url //此操作目的是把本地仓库push到github上面
+### 1.2.4 GitHub下载项目到本地
+```bash
+git init #把本地的目录变成git本地仓库（本地创建.git可管理的仓库）
+git remote add origin + url #添加远程仓库
+git remote -v #查看目录下到得所有项目
+git clone + url #下载代码到本地,这里``git pull + url``也可行
 ```
-### 1.2.5 Git常用操作
-```c
-/*创建仓库命令：*/
-git init：//初始化仓库
-git clone：//拷贝一份远程仓库，也就是下载一个项目
-/*提交与修改：*/
-git add：//添加文件到缓冲区
-git status：//查看仓库当前状态，显示有变更的文件
-git diff：//比较文件的不同，即缓存区和工作区的差异
-git commit：//将缓冲区内容添加到仓库中
-git reset：//回退版本
-git rm：//删除工作区文件
-git mv：//移动或重命名工作区文件
-/*提交日志：*/
-git log：//查看历史提交记录
-git blame <file>：//以列表形式查看指定文件的修改记录
-/*远程操作：*/
-git remote：//远程仓库操作
-git fetch：//从远程获取代码库
-git pull：//下载远程代码并合并
-git push：//上传远程代码并合并
+### 1.2.5 提交本地代码到GitHub
+```bash
+git add . #别忘记后面的.，此操作是把文件夹下面的文件(更新+新增)都添加进来
+git commit -m "提交信息" #“提交信息”里面换成你需要，如“first commit”
+git status #查看状态
+git push + url #此操作目的是把本地仓库push到github上面
+```
+### 1.2.6 git分支从master切换到main
+```bash
+git checkout -b main
+# Switched to a new branch 'main'
+git branch
+# * main
+#  master
+git merge master # 将master分支合并到main上
+# Already up to date.
+git pull origin main --allow-unrelated-histories # git pull origin main会报错：refusing to merge unrelated histories
+git push origin main
+```
+### 1.2.7 Git常用操作
+```bash
+#创建仓库命令：
+git init：#初始化仓库
+git clone：#拷贝一份远程仓库，也就是下载一个项目
+#提交与修改：
+git add：#添加文件到缓冲区
+git status：#查看仓库当前状态，显示有变更的文件
+git diff：#比较文件的不同，即缓存区和工作区的差异
+git commit：#将缓冲区内容添加到仓库中
+git reset：#回退版本
+git rm：#删除工作区文件
+git mv：#移动或重命名工作区文件
+#提交日志：
+git log：#查看历史提交记录
+git blame <file>：#以列表形式查看指定文件的修改记录
+#远程操作：
+git remote：#远程仓库操作
+git fetch：#从远程获取代码库
+git pull：#下载远程代码并合并
+git push：#上传远程代码并合并
 ```
 ***
 # 2. 使用c++/C#平台搭建三维几何模型的显示与交互引擎，可使用OSG或Unity等成熟产品
