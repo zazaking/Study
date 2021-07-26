@@ -1,7 +1,5 @@
 <div align='center' ><font size='70'>暑期任务安排</font></div>
 <div align='right' >by 郑泽灏</div>
-***
-***
 
 # 1. Git环境配置
 ## 1.1 目标
