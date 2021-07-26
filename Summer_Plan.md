@@ -66,7 +66,15 @@ git merge master # 将master分支合并到main上
 git pull origin main --allow-unrelated-histories # git pull origin main会报错：refusing to merge unrelated histories
 git push origin main
 ```
-### 1.2.7 Git常用操作
+### 1.2.7 忽略文件
+在主目录下建立".gitignore"文件，此文件规则如下：
+- 以斜杠/开头表示目录；
+- 以星号*通配多个字符；
+- 以问号?通配单个字符
+- 以方括号[]包含单个字符的匹配列表；
+- 以叹号!表示不忽略(跟踪)匹配到的文件或目录；
+
+### 1.2.8 Git常用操作
 ```bash
 #创建仓库命令：
 git init：#初始化仓库
