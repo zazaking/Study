@@ -1,4 +1,4 @@
-<div align='center' ><font size='70'>暑期任务安排</font></div>
+<div align='center' ><font size='70'>暑期任务</font></div>
 <div align='right' >by 郑泽灏</div>
 
 # 1. Git环境配置
@@ -10,20 +10,35 @@
 ## 1.2 学习记录
 ### 1.2.1 我所创建的GitHub地址
 - Git UserName：``zazaking``
+
 - Git主页：<https://github.com/zazaking>
+
 - 本次暑期任务地址：``git@github.com:zazaking/Study.git``
+
 - 以前项目地址：``git@github.com:zazaking/QRCodeDuplicateCheck.git``
-### 1.2.2 Git工作区、暂存区和版本库
-- 工作区：就是你在电脑里能看到的目录。
-- 暂存区：英文叫 stage 或 index。一般存放在 ``.git ``目录下的 index 文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
-- 版本库：工作区有一个隐藏目录 ``.git``，这个不算工作区，而是 Git 的版本库。、
-### 1.2.3  配置用户名和密码
+
+### 1.2.2 Git的工作区域
+- 工作目录（Working Directory）：
+电脑中存放平时项目的地方。
+- 暂存区（Stage/Index）：
+用于临时存放你的改动，事实上他只是一个文件，保存即将提交到文件列表信息。
+- 资源库（Repository/Git Directory）：
+安全存放数据的位置“.git文件夹”，这里面有你提交到所有版本的数据。其中HEAD文件职想最新放入仓库的版本。
+- Remote：
+远程仓库，GitHub
+
+### 1.2.3  Git必要配置
 ```bash
+#查看系统配置信息：
+git config --system -l #配置信息存放在 [ Git安装目录\etc\gitconfig ] 中
+#查看用户配置
+git config --global -l #配置信息存放在 [ C:\Users\用户名\gitconfig ] 中
+#查看仓库配置
+git config --local -l
+
 #配置用户名和密码：
-git config user.name "Your Name"  
-git config user.email "email@example.com"
-#查看当前用户信息： 
-git config --list
+git config --global user.name "Your Name"  
+git config --global user.email "email@example.com"
 ```
 ### 1.2.4 GitHub下载项目到本地
 ```bash
@@ -34,9 +49,9 @@ git clone + url #下载代码到本地,这里``git pull + url``也可行
 ```
 ### 1.2.5 提交本地代码到GitHub
 ```bash
-git add . #别忘记后面的.，此操作是把文件夹下面的文件(更新+新增)都添加进来
-git commit -m "提交信息" #“提交信息”里面换成你需要，如“first commit”
-git status #查看状态
+git add . #添加所有文件(更新+新增)到暂存区
+git commit -m "提交信息" #提交暂存区文件到本地仓库 -m 提交信息，如“first commit”
+git status #查看状态（可不做）
 git push + url #此操作目的是把本地仓库push到github上面
 ```
 ### 1.2.6 git分支从master切换到main
@@ -85,4 +100,3 @@ git push：#上传远程代码并合并
 # 4. 显示模型概述信息，并生成图文报告
 - [ ] 4.1 显示几何信息和质量，如包围盒、体积，质量等
 - [ ] 4.2 生成图文报告（HTML或Word均可），包括图片格式的三维模型和表格形式的模型信息（8/29完成）
-
