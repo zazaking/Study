@@ -50,9 +50,9 @@ public class SnakeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Canvas.transform.GetChild(1).GetComponent<Text>().text = "Score: " + (SnakeLength - 3);
+        Canvas.transform.FindChild("Text_Score").GetComponent<Text>().text = "Score: " + (SnakeLength - 3);
 
-        if ( Canvas.transform.GetChild(0).gameObject.active == false )
+        if ( Canvas.transform.FindChild("Button").gameObject.active == false )
         {
             //¼üÅÌÊÂ¼þÅÐ¶Ï
             if (Input.GetKeyDown(KeyCode.UpArrow) && SnakeDirection != MoveDOWN)

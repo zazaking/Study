@@ -4,7 +4,10 @@
     - 创建该库用于学习项目
 - 2021/07/26：
     - 创建暑期学习笔记文件
-- 2021/07/27：
+- 2021/07/28：
     - 创建Unity_Proect
     - 上传Unity贪吃蛇的练习项目
+- 2021/07/29：
+    - Update Unity Project "Demo_Snake_1"
+    - Update Summer_Plan.md
 
