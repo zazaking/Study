@@ -5,31 +5,31 @@ using UnityEngine.UI;
 
 public class SnakeController : MonoBehaviour
 {
-    //¶ÔÓ¦ÊµÌå
+    //ï¿½ï¿½Ó¦Êµï¿½ï¿½
     public GameObject BodyProfab;
     public GameObject SankeHead;
     public GameObject Canvas;
 
-    //Éß³¤¶È
+    //ï¿½ß³ï¿½ï¿½ï¿½
     private int SnakeLength;
 
-    //ÉßÒÆ¶¯
+    //ï¿½ï¿½ï¿½Æ¶ï¿½
     private Vector3 MoveUP = new Vector3(0,0,1);
     private Vector3 MoveDOWN = new Vector3(0, 0, -1);
     private Vector3 MoveLEFT = new Vector3(-1, 0, 0);
     private Vector3 MoveRIGHT = new Vector3(1, 0, 0);
 
-    //¼ÇÂ¼µ±Ç°Î»ÖÃ
+    //ï¿½ï¿½Â¼ï¿½ï¿½Ç°Î»ï¿½ï¿½
     private Vector3 SnakeDirection;
 
-    //Ê±¼ä¼ä¸ô
+    //Ê±ï¿½ï¿½ï¿½ï¿½
     private float Timer;
     public float Threshold;
 
     // Start is called before the first frame update
     void Start()
     {
-        //³õÊ¼»¯Éß
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
         SnakeLength = 3;
         SnakeDirection = MoveRIGHT;
         for(int i = 0; i < SnakeLength; ++i)
@@ -42,7 +42,7 @@ public class SnakeController : MonoBehaviour
                 );
         }
 
-        //³õÊ¼»¯Ê±¼ä
+        //ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½
         Timer = 0;
 
     }
@@ -50,11 +50,11 @@ public class SnakeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Canvas.transform.FindChild("Text_Score").GetComponent<Text>().text = "Score: " + (SnakeLength - 3);
+        Canvas.transform.Find("Text_Score").GetComponent<Text>().text = "Score: " + (SnakeLength - 3);
 
-        if ( Canvas.transform.FindChild("Button").gameObject.active == false )
+        if ( Canvas.transform.Find("Button").gameObject.active == false )
         {
-            //¼üÅÌÊÂ¼þÅÐ¶Ï
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ð¶ï¿½
             if (Input.GetKeyDown(KeyCode.UpArrow) && SnakeDirection != MoveDOWN)
             {
                 SnakeDirection = MoveUP;
@@ -73,7 +73,7 @@ public class SnakeController : MonoBehaviour
             }
 
 
-            //ÉßÔË¶¯
+            //ï¿½ï¿½ï¿½Ë¶ï¿½
             if (Timer > Threshold)
             {
                 for (int i = SnakeLength - 1; i > 0; --i)
@@ -86,14 +86,14 @@ public class SnakeController : MonoBehaviour
                 Timer = 0;
             }
 
-            Timer += Time.deltaTime; //ÉÏÒ»Ö¡Íê³ÉÊ±¼ä
+            Timer += Time.deltaTime; //ï¿½ï¿½Ò»Ö¡ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
         }
     }
 
-    //³ÔÆ»¹û·½·¨
+    //ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void GetApple()
     {
-        //´´½¨ÉíÌå
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GameObject SankeBody = Instantiate(BodyProfab, transform);
         SankeBody.transform.position = new Vector3(
                 transform.GetChild(SnakeLength - 1).transform.position.x,
@@ -103,7 +103,7 @@ public class SnakeController : MonoBehaviour
 
         SnakeLength++;
 
-        //¼ÓËÙ´¦Àí
+        //ï¿½ï¿½ï¿½Ù´ï¿½ï¿½ï¿½
         if (Threshold > 0.1f)
         {
             Threshold -= 0.05f;

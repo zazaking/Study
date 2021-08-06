@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    private string sceneName;
     public GameObject Text_CameraScene;
+    enum SceneName
+    {
+        Scene3,
+        SampleScene
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +28,7 @@ public class ChangeScene : MonoBehaviour
 
     public void f_ChangeScene()
     {
-
-        if(SceneManager.GetActiveScene().name == "Scene3")
+        if (SceneManager.GetActiveScene().name == SceneName.Scene3.ToString()) //枚举类型保存String
         {
             SceneManager.LoadSceneAsync("SampleScene", LoadSceneMode.Single);
             SceneManager.UnloadSceneAsync("Scene3");

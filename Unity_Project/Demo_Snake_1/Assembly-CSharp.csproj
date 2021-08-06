@@ -56,12 +56,23 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AppleController.cs" />
-    <Compile Include="Assets\Scripts\GameOver.cs" />
-    <Compile Include="Assets\Scripts\SnakeController.cs" />
-    <Compile Include="Assets\Scripts\ReStart.cs" />
-    <Compile Include="Assets\Scripts\ChangeCamera.cs" />
-    <Compile Include="Assets\Scripts\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\Importer.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\AppleController.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\Exporter.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\VectorHash.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\GameOver.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\StlImporterEditor.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\StlImporter.cs" />
+    <Compile Include="Assets\Scripts\Scene3\CubeController.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\SnakeController.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\FileMenuItems.cs" />
+    <Compile Include="Assets\Scripts\Scene3\ExporterSTL.cs" />
+    <Compile Include="Assets\Scripts\Scene3\STL\Stl.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\ReStart.cs" />
+    <Compile Include="Assets\Scripts\Scene3\ImporterSTL.cs" />
+    <Compile Include="Assets\Scripts\Scene3\ImporterOBJ.cs" />
+    <Compile Include="Assets\Scripts\SampleScene\ChangeCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UCLAGameLab\Wireframe\Shaders\UCLA GameLab Wireframe Functions.cginc" />

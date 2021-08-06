@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour
     {
         if (other.name == "Snake_Head") 
         {
-            Canvas.transform.FindChild("Button").gameObject.SetActive(true);
+            Canvas.transform.Find("Button").gameObject.SetActive(true);
         }
     }
 }

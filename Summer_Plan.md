@@ -101,15 +101,15 @@ git push：#上传远程代码并合并
 ## 1.1 目标
 - [x] 2.1 具备视角转换功能，如俯视图、正视图等
 - [x] 2.2 具备视图转换功能，如渲染视图、线框视图等（8/1完成）
-- [ ] 2.3 具备导入/导出STL和STEP模型的功能（8/8完成）
-- [ ] 2.4 具备鼠标交互的功能，如旋转、平移、缩放等（8/15完成）
+- [x] 2.3 具备导入/导出STL和STEP模型的功能（8/8完成）
+- [x] 2.4 具备鼠标交互的功能，如旋转、平移、缩放等（8/15完成）
 ## 1.2 学习记录
 ### 1.2.1 Unity安装插件proBulider、progrids
 - 安装插件proBulider：
     直接在Windows\Package Manager中添加，然后在Tools中打开。
 - 安装插件progrids：
     在“项目名\Packages\manifest.json“中粘贴"com.unity.progrids":"3.0.3-preview.4"，然后切换至Unity，在Tools中打开。
-### 1.2.1 编写Unity3D项目“Demo_Sanke_1”，并上传至GitHub
+### 1.2.2 编写Unity3D项目“Demo_Sanke_1”，并上传至GitHub
 - 场景一为学习的贪吃蛇游戏，通过C#脚本实现贪吃蛇游戏基本逻辑，通过C#脚本实现相机位置的变换，具备视角转换功能，如俯视图、正视图。
 
     ![image](https://i.ibb.co/vLDR85f/9-C753726-A94645-B89847-D2582326-D57-E.jpg)
@@ -126,6 +126,28 @@ git push：#上传远程代码并合并
 
     ![image](https://media.giphy.com/media/ymrsVTzONTFUVxeF1v/giphy.gif)
 
+### 1.2.3 在Unity3D项目“Demo_Sanke_1”的“Scene3”场景中增加按钮实现外部STL模型的导入，导出功能。
+- STL模型导入：
+
+    ![image](https://i.ibb.co/34GRPbk/F0-DB58-D0-FB554-E179-D6628030-EA3-EFFB.jpg)
+
+    ![image](https://i.ibb.co/SxFzYpx/D8-DDD5-E596-D44-A7-B87-B1-A96066310176.jpg)
+
+    ![image](https://i.ibb.co/GV6WQZH/YGI-F-F-N2-PVU-6-U7-70.png)
+
+- STL模型导出：
+    
+    ![image](https://i.ibb.co/444FYcT/72-FABEE921-FC4-A29-A426-C8-D387675-D18.jpg)
+
+    ![image](https://i.ibb.co/3BxHdxd/627273-E856-FF4-E4-BA1-AFD3-FBD623-F6-C2.jpg)
+
+    ![image](https://i.ibb.co/GJ9Wwxj/8-FE93643303-E4-AB4937-EADA1961-E51-D0.jpg)
+
+### 1.2.4 并实现导入模型动态添加运动控制脚本，实现缩放、鼠标跟随功能。
+- 实现滚轮缩放功能
+- 实现鼠标跟随功能，方向始终跟随，点击左键运动跟随
+
+    ![image](https://media.giphy.com/media/hEvO9xp9GuNPffrHLJ/giphy.gif)
 
 # 3. 基于上述引擎，构建一个包含多物体的几何模型，并用几何模型展示其工作过程
 - [ ] 3.1 从不同视角展示所建立的三维模型，并生成视频文件
