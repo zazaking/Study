@@ -142,12 +142,14 @@ git push：#上传远程代码并合并
     ![image](https://i.ibb.co/3BxHdxd/627273-E856-FF4-E4-BA1-AFD3-FBD623-F6-C2.jpg)
 
     ![image](https://i.ibb.co/GJ9Wwxj/8-FE93643303-E4-AB4937-EADA1961-E51-D0.jpg)
+- STL模型导入、导出已重写：
+    新项目位置为："Study\Unity_Project\STL_Im&Exporter"
 
 ### 1.2.4 并实现导入模型动态添加运动控制脚本，实现缩放、鼠标跟随功能。
 - 实现滚轮缩放功能
 - 实现鼠标跟随功能，方向始终跟随，点击左键运动跟随
 
-    ![image](https://media.giphy.com/media/hEvO9xp9GuNPffrHLJ/giphy.gif)
+    ![image](https://media.giphy.com/media/UsGHTnYvffgOSlVyZZ/giphy.gif)
 
 # 3. 基于上述引擎，构建一个包含多物体的几何模型，并用几何模型展示其工作过程
 - [ ] 3.1 从不同视角展示所建立的三维模型，并生成视频文件
