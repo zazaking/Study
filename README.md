@@ -1,5 +1,4 @@
-# Describe
-
+# 更新日志
 - 2021/07/25：
     - 创建该库用于学习项目
 - 2021/07/26：
@@ -8,21 +7,19 @@
     - 创建Unity_Proect
     - 上传Unity贪吃蛇的练习项目
 - 2021/07/29：
-
     - Update Unity Project "Demo_Snake_1"
-
     - Update Summer_Plan.md
-
 - 2021/08/06：
-
     - Update Unity Project "Demo_Snake_1"
-
     - Update Summer_Plan.md
-	
 	- Add STL_Model
-
 - 2021/08/09：
-
     - Add New Project "Study\Unity_Project\STL_Im&Exporter"
-    
     - Update Summer_Plan.md
+- 2021/08/13：
+    - 删除之前的项目"Demo_Snake_1"，已废弃
+    - 项目"STL_Im&Exporter"中重写了线框显示功能，实现了截图
+# 已知问题
+- STL_Im&Exporter
+    - 线框模式旋转有问题，可能是轴心问题，移动计算也有问题
+    - 还未完成截图转化为视频 功能

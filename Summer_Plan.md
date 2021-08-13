@@ -151,6 +151,16 @@ git push：#上传远程代码并合并
 
     ![image](https://media.giphy.com/media/UsGHTnYvffgOSlVyZZ/giphy.gif)
 
+### 1.2.5 2021/08/13重写了线框（WireFrame）模式
+- 重写了线框模式，改为提取对象Mesh信息再用OpenGL划线并设置对象Skybox透明的方式，担由于运动控制每次都需要提取点，可能性能较低：
+
+![image](https://media.giphy.com/media/w30rdTs0xRqLaXV5ou/giphy.gif)
+
+- 重写了旋转，改为鼠标欢动旋转，新线框模式支持：
+
+![image](https://media.giphy.com/media/5yREawGn4voAeMyFa8/giphy.gif)
+
+
 # 3. 基于上述引擎，构建一个包含多物体的几何模型，并用几何模型展示其工作过程
 - [ ] 3.1 从不同视角展示所建立的三维模型，并生成视频文件
 - [ ] 3.2 展现关键部件的运动过程， 并生成视频文件（8/22完成）
