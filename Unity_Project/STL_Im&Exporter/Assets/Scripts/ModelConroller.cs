@@ -9,10 +9,16 @@ public class ModelConroller : MonoBehaviour
     private Vector3 MoveLEFT = new Vector3(-1, 0, 0);
     private Vector3 MoveRIGHT = new Vector3(1, 0, 0);
 
+    //滑动旋转变量
+    public float sumRotationX = 0;
+    public float sumRotationY = 0;
+    private Vector3 oldPosition;
+    private Vector3 newPosition;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -36,16 +42,22 @@ public class ModelConroller : MonoBehaviour
             this.transform.position += MoveRIGHT;
         }
 
-        float moveSpeed = 0;
+        //滑动旋转
+        if (Input.GetMouseButtonDown(0))
+        {
+            newPosition = Input.mousePosition;
+        }
         if (Input.GetMouseButton(0))
         {
-            moveSpeed = 300f;
+            oldPosition = newPosition;
+            newPosition = Input.mousePosition;
+
+            sumRotationX += (newPosition.x - oldPosition.x);
+            sumRotationY += (newPosition.y - oldPosition.y);
+
+            this.transform.Rotate(GetCenterVector3(), newPosition.x - oldPosition.x, Space.World);
+            this.transform.Rotate(GetCenterVector3(), newPosition.y - oldPosition.y, Space.World);
         }
-        else
-        {
-            moveSpeed = 0f;
-        }
-        transform.Rotate(0, moveSpeed * Time.deltaTime, 0);
 
         //滚轮缩放
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
@@ -62,5 +74,10 @@ public class ModelConroller : MonoBehaviour
             if (Camera.main.orthographicSize >= 1)
                 Camera.main.orthographicSize -= 0.5F;
         }
+    }
+
+    public Vector3 GetCenterVector3()
+    {
+        return (this.GetComponent<Renderer>().bounds.center + this.gameObject.transform.position);
     }
 }

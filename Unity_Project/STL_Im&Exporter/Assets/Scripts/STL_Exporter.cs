@@ -11,13 +11,13 @@ public class STL_Exporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ExportSTLModel()
@@ -36,7 +36,7 @@ public class STL_Exporter : MonoBehaviour
             //生成导出模型信息
             GameObject stlGameObject = StlGoParent.transform.GetChild(i).gameObject;
             string strSavePath = strSaveURL + "/" + stlGameObject.name + ".stl";
-            
+
             //导出STL模型
             StlExporter(stlGameObject, strSavePath);
         }
@@ -89,7 +89,7 @@ public class STL_Exporter : MonoBehaviour
 
         sb.AppendLine(string.Format("endsolid {0}", strSaveName));
 
-        File.WriteAllText(strSavePath,sb.ToString());
+        File.WriteAllText(strSavePath, sb.ToString());
     }
 
     private static Vector3 AvgNrm(Vector3 a, Vector3 b, Vector3 c)

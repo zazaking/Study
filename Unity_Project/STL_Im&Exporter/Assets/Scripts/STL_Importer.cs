@@ -12,13 +12,13 @@ public class STL_Importer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void ImportSTLModel()
@@ -26,8 +26,8 @@ public class STL_Importer : MonoBehaviour
         //获取STL文件路径
         string strStlPath = EditorUtility.OpenFilePanel("打开模型", "", "stl");
         Debug.Log("Path:" + strStlPath);
-        if (strStlPath.Length <= 0) 
-        { 
+        if (strStlPath.Length <= 0)
+        {
             return;
         }
 
@@ -48,7 +48,7 @@ public class STL_Importer : MonoBehaviour
         {
             if (line.StartsWith("solid"))
             {
-                
+
             }
             else if (line.StartsWith("facet"))
             {
@@ -62,11 +62,11 @@ public class STL_Importer : MonoBehaviour
             }
             else if (line.StartsWith("endloop"))
             {
-                
+
             }
             else if (line.StartsWith("endfacet"))
             {
-                
+
             }
             else if (line.StartsWith("	vertex"))
             {
@@ -110,12 +110,33 @@ public class STL_Importer : MonoBehaviour
         StlGameObject.GetComponent<MeshFilter>().mesh = mesh;
 
         //添加材质
-        StlGameObject.gameObject.GetComponent<Renderer>().material.EnableKeyword("_NORMALMAP");
+        string[] KeyWords = {
+            "_NORMALMAP" ,
+            "_ALPHATEST_ON" ,
+            "_ALPHABLEND_ON",
+            "_ALPHAPREMULTIPLY_ON" ,
+            "_EMISSION",
+            "_PARALLAXMAP" ,
+            "_DETAIL_MULX2" ,
+            //"_METALLICGLOSSMAP",
+            "_SPECGLOSSMAP"
+        };
+        foreach (string keyword in KeyWords)
+        {
+            StlGameObject.gameObject.GetComponent<Renderer>().material.EnableKeyword(keyword);
+        }
         //StlGameObject.gameObject.GetComponent<Renderer>().material.EnableKeyword("_METALLICGLOSSMAP");
 
         //添加运动控制脚本
         StlGameObject.gameObject.AddComponent<ModelConroller>();
         StlGameObject.gameObject.GetComponent<ModelConroller>().enabled = true;
+
+        //StlGameObject.gameObject.AddComponent<DrawWireFrame>();
+        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().lineColor = Color.black;
+        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().lineMat = new Material(Shader.Find("Assets/Shader/WireFrameShader.shader")); 
+        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().GoParent = StlGoParent;
+        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().enabled = true;
+
     }
 
     static Vector3 StringToVec3(string str)
