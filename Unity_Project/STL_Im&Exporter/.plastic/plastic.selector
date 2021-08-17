@@ -1,4 +1,0 @@
-repository "STL_Im&Exporter@ssl://wechat_os_qy01woidryybfrlldj3ccdeg8@sh02-plasticscm.unity.cn:8787"
-  path "/"
-    smartbranch "/main/505968568" 
-     
