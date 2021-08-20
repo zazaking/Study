@@ -171,6 +171,13 @@ git push：#上传远程代码并合并
 
 ![image](https://media.giphy.com/media/BFMc5I7mCHVQHUx91L/giphy.gif)
 
+### 3.1.2 2021/08/20 重新实现录像功能：
+- 重写视屏录制功能，改用自定义格式+stl模型，自定义格式的记录文件（*.zaza），来保存场景内每一帧所有GameObject的数量、名称、位置、角度信息。
+- 在记录时：每隔固定时间记录当前场景内所有GameObject的信息，如果当前帧出现新导入的GameObject则在记录文件同目录下创建相应的STL模型文件。
+- 加载记录时：获取当前帧记录的GameObject信息，并和当前场景内的GameObject对比，如果不存在，则根据STL模型创建新的对象，然后再根据记录的位置、角度信息移动。
+
+![image](https://media.giphy.com/media/neZDwfBffoIbhFv8bQ/giphy.gif)
+
 # 4. 显示模型概述信息，并生成图文报告
 - [ ] 4.1 显示几何信息和质量，如包围盒、体积，质量等
 - [ ] 4.2 生成图文报告（HTML或Word均可），包括图片格式的三维模型和表格形式的模型信息（8/29完成）

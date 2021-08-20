@@ -18,7 +18,7 @@ public class RecordVideo : MonoBehaviour
 
     private int ScreenShotHeight;
     private int ScreenShotWith;
-    
+
     private bool IsRecord = false;
     private static int RecordCount = 0;
 
