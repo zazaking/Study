@@ -1,47 +1,108 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 Shader "Custom/WireFrameShader"
 {
-    Properties
-    {
-        _MainTex ("Texture", 2D) = "white" {}
-        _LineColor("Line Color", Color) = (100.0, 100.0, 100.0, 100.0)
-    }
-    SubShader
-    {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
-
-        Pass
-        {
-            Tags { "RenderType" = "Opaque"}
-			CGPROGRAM
+Properties {
+         _Color("Color",Color)=(1.0,1.0,1.0,1.0)
+         _EdgeColor("Edge Color",Color)=(1.0,1.0,1.0,1.0)
+         _Width("Width",Range(0,1))=0.2
+     }
+ SubShader {
+     Tags { 
+     "Queue"="Transparent" 
+     "IgnoreProjector"="True" 
+     "RenderType"="Transparent" 
+     }
+     Blend SrcAlpha OneMinusSrcAlpha
+     LOD 200
+     Cull Front
+     zWrite off
+     Pass {
+     CGPROGRAM
+     #pragma vertex vert
+     #pragma fragment frag
+     #pragma target 3.0
+     #include "UnityCG.cginc"
  
-			#pragma vertex vert
-			#pragma fragment frag
+     struct a2v {
+         half4 uv : TEXCOORD0 ;
+         half4 vertex : POSITION ;
+     };
  
-			#include "UnityCG.cginc"
+     struct v2f{
+         half4 pos : SV_POSITION ;
+         half4 uv : TEXCOORD0  ;            
+     };
+     fixed4 _Color;
+     fixed4 _EdgeColor;
+     float _Width;
+     
+     v2f vert(a2v v)
+     {
+         v2f o;
+         o.uv = v.uv;
+         o.pos=UnityObjectToClipPos(v.vertex);
+         return o;
+     }
  
-			struct v2f
-			{
-				half4 pos : SV_POSITION;
-			};
  
-			fixed4 _LineColor;
+     fixed4 frag(v2f i) : COLOR
+     {
+         fixed4 col;
+         float lx = step(_Width, i.uv.x);
+         float ly = step(_Width, i.uv.y);
+         float hx = step(i.uv.x, 1.0 - _Width);
+         float hy = step(i.uv.y, 1.0 - _Width);
+         col = lerp(_EdgeColor, _Color, lx*ly*hx*hy);
+         return col;
+     }
+     ENDCG
+     }
+     Blend SrcAlpha OneMinusSrcAlpha
+     LOD 200 
+     Cull Back
+     zWrite off
+     Pass {
+     CGPROGRAM
+     #pragma vertex vert
+     #pragma fragment frag
+     #pragma target 3.0
+     #include "UnityCG.cginc"
  
-			v2f vert(appdata_base  v)
-			{
-				v2f o;
-				o.pos = UnityObjectToClipPos(v.vertex);
-				return o;
-			}
+     struct a2v {
+         half4 uv : TEXCOORD0 ;
+         half4 vertex : POSITION ;
+     };
  
-			fixed4 frag(v2f i) : COLOR
-			{
-				return _LineColor;
-			}
+     struct v2f{
+         half4 pos : SV_POSITION ;
+         half4 uv : TEXCOORD0  ;            
+     };
+     fixed4 _Color;
+     fixed4 _EdgeColor;
+     float _Width;
+     
+     v2f vert(a2v v)
+     {
+         v2f o;
+         o.uv = v.uv;
+         o.pos=UnityObjectToClipPos(v.vertex);
+         return o;
+     }
  
-			ENDCG
-        }
-    }
-
-    FallBack "Diffus"
+ 
+     fixed4 frag(v2f i) : COLOR
+     {
+         fixed4 col;
+         float lx = step(_Width, i.uv.x);
+         float ly = step(_Width, i.uv.y);
+         float hx = step(i.uv.x, 1.0 - _Width);
+         float hy = step(i.uv.y, 1.0 - _Width);
+         col = lerp(_EdgeColor, _Color, lx*ly*hx*hy);
+         return col;
+     }
+     ENDCG
+     }
+ } 
+     FallBack "Diffuse"
 }

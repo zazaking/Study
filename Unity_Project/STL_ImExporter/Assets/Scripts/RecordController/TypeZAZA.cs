@@ -48,7 +48,8 @@ namespace VideoZAZA
     //记录文件控制类
     public class ZAZA_Controller
     {
-        public enum state{
+        public enum state
+        {
             isIdle = 0,
             isLoad = 1,
             isPlay = 2,
@@ -57,14 +58,14 @@ namespace VideoZAZA
 
         private int mState; //状态
         private int mSaveStepIndex; //写文件序列号
-        
+
         private string saveFileDiectory;    //保存文件文件夹Path
         private string loadFileDiectory;    //保存文件文件夹Path
 
         private List<typeZAZA> listStep;    //记录信息列表
 
-        private StreamWriter streamWriter; 
-        private StreamReader streamReader; 
+        private StreamWriter streamWriter;
+        private StreamReader streamReader;
 
         public ZAZA_Controller()
         {
@@ -93,14 +94,14 @@ namespace VideoZAZA
                 return;
 
             mState = (int)state.isLoad;
-            loadFileDiectory = _VideoFilePath.Substring(0, _VideoFilePath.LastIndexOf("/")+1);
+            loadFileDiectory = _VideoFilePath.Substring(0, _VideoFilePath.LastIndexOf("/") + 1);
 
             listStep.Clear();
-            
+
             //获取文件流
             typeZAZA tempStep = new typeZAZA();
             streamReader = new StreamReader(_VideoFilePath);
-            
+
             string line;
             while ((line = streamReader.ReadLine()) != null)
             {
@@ -150,12 +151,12 @@ namespace VideoZAZA
             if (mState != (int)state.isPlay)
                 return;
 
-            if ( _stepIndex >= listStep.Count || _stepIndex < 0)
+            if (_stepIndex >= listStep.Count || _stepIndex < 0)
             {
                 mState = (int)state.isIdle;
                 return;
             }
-                
+
 
             typeZAZA tempStep = new typeZAZA(listStep[_stepIndex]);
 
@@ -169,7 +170,7 @@ namespace VideoZAZA
                 {
                     string modelName = tempStep.listObjName[i];
                     string modelPath = loadFileDiectory + modelName + ".stl";
-                    
+
                     gameObject = LoadSTLModel(modelPath);
                     gameObject.transform.SetParent(StlGoParent.transform);
                 }
@@ -347,7 +348,7 @@ namespace VideoZAZA
             return gameObject;
         }
 
-        private void SaveSTLModel(string filePath,GameObject gameObject)
+        private void SaveSTLModel(string filePath, GameObject gameObject)
         {
             //生成导出模型信息
             string strSaveName = gameObject.name;
@@ -356,7 +357,7 @@ namespace VideoZAZA
             int[] t = gameObject.GetComponent<MeshFilter>().mesh.triangles;
 
             //创建文件流
-            StreamWriter stlSW = new StreamWriter(filePath,false);
+            StreamWriter stlSW = new StreamWriter(filePath, false);
 
             //写文件
             stlSW.WriteLine(string.Format("solid {0}", strSaveName));

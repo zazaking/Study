@@ -48,8 +48,6 @@ public class RecordMotion : MonoBehaviour
     {
         if (!isRecord)
         {
-            
-
             //创建记录文件
             RecordName = DateTime.Now.ToString("yyyy-MM-dd") + DateTime.Now.ToString("-hh-mm-ss") + ".zaza";
 

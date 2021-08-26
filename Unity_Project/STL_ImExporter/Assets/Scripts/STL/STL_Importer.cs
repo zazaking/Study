@@ -87,6 +87,7 @@ public class STL_Importer : MonoBehaviour
         StlGameObject.name = strStlName;
         StlGameObject.AddComponent<MeshFilter>();
         StlGameObject.AddComponent<MeshRenderer>();
+        StlGameObject.AddComponent<BoxCollider>();
 
         int len = listNormals.Count;
         Vector3[] v = new Vector3[len];
@@ -125,17 +126,10 @@ public class STL_Importer : MonoBehaviour
         {
             StlGameObject.gameObject.GetComponent<Renderer>().material.EnableKeyword(keyword);
         }
-        //StlGameObject.gameObject.GetComponent<Renderer>().material.EnableKeyword("_METALLICGLOSSMAP");
 
         //添加运动控制脚本
         StlGameObject.gameObject.AddComponent<ModelConroller>();
         StlGameObject.gameObject.GetComponent<ModelConroller>().enabled = true;
-
-        //StlGameObject.gameObject.AddComponent<DrawWireFrame>();
-        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().lineColor = Color.black;
-        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().lineMat = new Material(Shader.Find("Assets/Shader/WireFrameShader.shader")); 
-        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().GoParent = StlGoParent;
-        //StlGameObject.gameObject.GetComponent<DrawWireFrame>().enabled = true;
 
     }
 

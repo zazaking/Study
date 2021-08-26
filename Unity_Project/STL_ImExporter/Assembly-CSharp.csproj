@@ -58,12 +58,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ModelConroller.cs" />
     <Compile Include="Assets\Scripts\DrawWireFrame.cs" />
-    <Compile Include="Assets\Scripts\RecordVideo.cs" />
+    <Compile Include="Assets\Scripts\RecordController\LoadRecord.cs" />
+    <Compile Include="Assets\Scripts\RecordController\RecordMotion.cs" />
+    <Compile Include="Assets\Scripts\Video\RecordVideo.cs" />
+    <Compile Include="Assets\Scripts\ShowGeometricInformation.cs" />
     <Compile Include="Assets\Scripts\STL\STL_Exporter.cs" />
     <Compile Include="Assets\Scripts\STL\STL_Importer.cs" />
-    <Compile Include="Assets\Scripts\RecordController\RecordMotion.cs" />
-    <Compile Include="Assets\Scripts\RecordController\LoadRecord.cs" />
     <Compile Include="Assets\Scripts\RecordController\TypeZAZA.cs" />
+    <Compile Include="Assets\Scripts\HTML\ExportHTML.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shader\WireFrameShader.shader" />

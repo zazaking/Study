@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class ModelConroller : MonoBehaviour
 {
+    public GameObject gameObjectInfoText;
     private Vector3 MoveUP = new Vector3(0, 0, 1);
     private Vector3 MoveDOWN = new Vector3(0, 0, -1);
     private Vector3 MoveLEFT = new Vector3(-1, 0, 0);
@@ -15,10 +15,12 @@ public class ModelConroller : MonoBehaviour
     private Vector3 oldPosition;
     private Vector3 newPosition;
 
-    // Start is called before the first frame update
+    private bool isShowBoundingBox = false;
+    private GameObject boundingBoxGameObject;
+
     void Start()
     {
-
+        gameObjectInfoText = GameObject.Find("Text_GameObjectInfo").gameObject;
     }
 
     // Update is called once per frame
@@ -74,6 +76,61 @@ public class ModelConroller : MonoBehaviour
             if (Camera.main.orthographicSize >= 1)
                 Camera.main.orthographicSize -= 0.5F;
         }
+
+        //鼠标左键点击物体显示包围盒
+        if (Input.GetMouseButtonDown(0) && this.gameObject != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  //camare2D.ScreenPointToRay (Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    showGameObjectInfo(this.gameObject);
+
+                    if (isShowBoundingBox == false)
+                    {
+                        boundingBoxGameObject = ShowGeometricInformation.GetBoundingBox_Sphere(this.gameObject);
+                        
+                        isShowBoundingBox = true;
+                    }
+                }
+            }
+        }
+
+        //鼠标右键点击物体删除包围盒
+        if (Input.GetMouseButtonDown(1) && this.gameObject != null)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);  //camare2D.ScreenPointToRay (Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.gameObject == this.gameObject)
+                {
+                    if (isShowBoundingBox == true)
+                    {
+                        if (boundingBoxGameObject != null)
+                        {
+                            DestroyImmediate(boundingBoxGameObject);
+                        }
+
+                        isShowBoundingBox = false;
+                    }
+                }
+            }
+        }
+    }
+
+    private void showGameObjectInfo(GameObject _gameObject)
+    {
+        string info;
+        info = "ObjName: " + _gameObject.name.ToString() + "\n";
+        info += "Volume: " + ShowGeometricInformation.GetVolume(_gameObject) + "\n";
+        info += "Area: " + ShowGeometricInformation.GetArea(_gameObject) + "\n";
+        Debug.Log(info);
+        gameObjectInfoText.GetComponent<Text>().text = info;
     }
 
     public Vector3 GetCenterVector3()

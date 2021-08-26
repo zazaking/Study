@@ -136,7 +136,7 @@ git push：#上传远程代码并合并
     ![image](https://i.ibb.co/GV6WQZH/YGI-F-F-N2-PVU-6-U7-70.png)
 
 - STL模型导出：
-    
+  
     ![image](https://i.ibb.co/444FYcT/72-FABEE921-FC4-A29-A426-C8-D387675-D18.jpg)
 
     ![image](https://i.ibb.co/3BxHdxd/627273-E856-FF4-E4-BA1-AFD3-FBD623-F6-C2.jpg)
@@ -165,13 +165,14 @@ git push：#上传远程代码并合并
 ## 3.1 目标
 - [X] 3.1 从不同视角展示所建立的三维模型，并生成视频文件
 - [ ] 3.2 展现关键部件的运动过程， 并生成视频文件（8/22完成）
-### 3.1.1 实现了游戏内的录像功能。
+## 3.2 学习记录
+### 3.2.1 实现了游戏内的录像功能。
 - 首先实现Unity内对于游戏的截图功能，并将截图保存至临时文件夹下。
 - 结束录制后，利用FFMPEG库，实现图片到视频的转化。
 
 ![image](https://media.giphy.com/media/BFMc5I7mCHVQHUx91L/giphy.gif)
 
-### 3.1.2 2021/08/20 重新实现录像功能：
+### 3.2.2 2021/08/20 重新实现录像功能：
 - 重写视屏录制功能，改用自定义格式+stl模型，自定义格式的记录文件（*.zaza），来保存场景内每一帧所有GameObject的数量、名称、位置、角度信息。
 - 在记录时：每隔固定时间记录当前场景内所有GameObject的信息，如果当前帧出现新导入的GameObject则在记录文件同目录下创建相应的STL模型文件。
 - 加载记录时：获取当前帧记录的GameObject信息，并和当前场景内的GameObject对比，如果不存在，则根据STL模型创建新的对象，然后再根据记录的位置、角度信息移动。
@@ -179,5 +180,22 @@ git push：#上传远程代码并合并
 ![image](https://media.giphy.com/media/neZDwfBffoIbhFv8bQ/giphy.gif)
 
 # 4. 显示模型概述信息，并生成图文报告
-- [ ] 4.1 显示几何信息和质量，如包围盒、体积，质量等
-- [ ] 4.2 生成图文报告（HTML或Word均可），包括图片格式的三维模型和表格形式的模型信息（8/29完成）
+## 4.1 目标：
+- [x] 4.1 显示几何信息和质量，如包围盒、体积，质量等
+- [x] 4.2 生成图文报告（HTML或Word均可），包括图片格式的三维模型和表格形式的模型信息（8/29完成）
+## 4.2 学习记录
+### 4.2.1 显示几何信息和质量，如包围盒、体积，质量
+- 点击模型Game Object生成包围盒，包围盒采用的是球型包围盒，现根据物体的顶点均值，计算出图形中心点，然后根据每点到中心点的最大距离算出半径，创建新的包围盒Game Object，修改mesh画出对应圆形包围盒。
+- 点击模型Game Object显示显示对应体积、表面积信息。
+    - 表面积计算方法：根据Mesh找到构成对象的每个三角形，累加每个三角形的面积。
+    - 体积计算方法：根据Mesh找到构成对象的每个三角形，累加（每个三角形的面积 * 三角形到中心点的距离 / 6）。
+
+![image](https://media.giphy.com/media/pYo4vwPheKeBH77vB0/giphy.gif)
+
+### 4.2.2 生成HTML图文报告
+- 生成模型特写图片：将所有模型Mesh信息中的Vector3坐标转为相机的Vector2坐标，创建新的Texture2D，将坐标中的所有点经过缩放、平移、连接后在图片中画出该点。
+- 将所有模型信息（模型名称、生成的图片、体积、表面积）导出到HTML文件中。
+
+![image](https://i.ibb.co/Cw5PGpv/5-OA-RHCDD-OCMLPAO9-C8.png)
+
+![image](https://media.giphy.com/media/9OUNHXLqBU1Tdct9dG/giphy.gif)

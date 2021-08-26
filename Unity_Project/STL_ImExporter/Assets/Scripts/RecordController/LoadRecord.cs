@@ -11,7 +11,10 @@ public class LoadRecord : MonoBehaviour
 
     void Start()
     {
-        zaza = new ZAZA_Controller();
+        if(zaza == null)
+        {
+            zaza = new ZAZA_Controller();
+        }
     }
 
     public void OnClick()
@@ -41,11 +44,10 @@ public class LoadRecord : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (zaza.isPlay())
+        if (zaza != null && zaza.isPlay())
         {
             zaza.PlayOneStep(goParent, stepCount);
             ++stepCount;
         }
-        
     }
 }
