@@ -92,7 +92,8 @@ public class ModelConroller : MonoBehaviour
                     if (isShowBoundingBox == false)
                     {
                         boundingBoxGameObject = ShowGeometricInformation.GetBoundingBox_Sphere(this.gameObject);
-                        
+                        boundingBoxGameObject.transform.position = this.gameObject.transform.position;
+
                         isShowBoundingBox = true;
                     }
                 }

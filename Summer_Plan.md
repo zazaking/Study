@@ -190,7 +190,7 @@ git push：#上传远程代码并合并
     - 表面积计算方法：根据Mesh找到构成对象的每个三角形，累加每个三角形的面积。
     - 体积计算方法：根据Mesh找到构成对象的每个三角形，累加（每个三角形的面积 * 三角形到中心点的距离 / 6）。
 
-![image](https://media.giphy.com/media/pYo4vwPheKeBH77vB0/giphy.gif)
+![image](https://media.giphy.com/media/oXPmho89aACtdlUTLG/giphy.gif)
 
 ### 4.2.2 生成HTML图文报告
 - 生成模型特写图片：将所有模型Mesh信息中的Vector3坐标转为相机的Vector2坐标，创建新的Texture2D，将坐标中的所有点经过缩放、平移、连接后在图片中画出该点。
